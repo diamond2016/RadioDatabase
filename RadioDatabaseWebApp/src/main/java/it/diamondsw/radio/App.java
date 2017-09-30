@@ -15,7 +15,8 @@ public class App
         RadioService rs = new RadioService(); 
     	List<RadioDesc> radios = rs.findAvailRadios();       
         System.out.println(radios);  
-        List<Genre> genres = gs.findAvailGenres();       
+        List<Genre> genres = gs.findAvailGenres();   
+        
         System.out.println(genres);
         gs.insertGenre(new Genre(60, "Religione"));
         try { r = new Radio (30, "Radio Maria", 60, new URL("http://www.radiomaria.it")); }

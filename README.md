@@ -1,5 +1,6 @@
 # RadioWepApp
 A simple internet radio database web app
 This app is to experiment with bootstrap.
-Java 8 - Tomvat 8 - Bootstrap - servlet - SQLite database
+
+Use: Java 8 - Tomcat 8 - Bootstrap - Servlet - SQLite database
 At the moment in early stage.

@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- <link rel="stylesheet" href="css/bootstrap.min.css"/>         
-<script src="js/bootstrap.min.js"></script>  
-<title>Radio database - list radio</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio search</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
- <body>        
+
+<body>
+<!-- jQuery (necessary for Bootstrap’s JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+      
  <nav class="navbar navbar-default">
    <div class="container-fluid row">
      <div class="nav navbar-nav" id="main-navbar">

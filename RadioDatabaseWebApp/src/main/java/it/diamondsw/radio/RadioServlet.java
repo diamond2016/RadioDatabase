@@ -42,7 +42,7 @@ public class RadioServlet extends HttpServlet {
 		}			
 		} else {
 			List<RadioDesc> result = radioService.findAvailRadios();
-			System.out.println("forwardListRadios");			
+			System.out.println("forwardListRadios no action");			
 			forwardListRadios(req, resp, result);
 		}			
 	} // doGet

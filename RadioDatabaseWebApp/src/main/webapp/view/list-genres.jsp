@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*, javax.servlet.*" %>    
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -8,6 +11,15 @@
 <title>Radio search</title>
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-6, .col-md-8 {
+background-color: white;
+color: black;
+line-height: 5em;
+border: 1px solid white;
+height: 5em;
+}
+</style>
 </head>
 
 <body>
@@ -16,18 +28,21 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
       
- <nav class="navbar navbar-default">
-   <div class="container-fluid row">
-     <div class="nav navbar-nav" id="main-navbar">
-      	<a class="nav-item active" href="/RadioDatabaseWebApp/index.jsp">Home</a>
-      	<a class="nav-item" href="./view/list-radios.jsp">Search</a>
-      	<a class="nav-item" href="./view/new-radio.jsp">Insert</a>
-      	<a class="nav-item" href="./view/list-genres.jsp">Genres</a>
-    </div>
-  </div>
-</nav> 
- 	<div class="container">	
-    	<h2>Genres</h2>
+<div class="container">
+<div class="row">
+	<div class="col-md-2">
+	<a href="/index.jsp">Home</a>
+	</div>
+	<div class="col-md-2">
+	<a href="/view/list-genres.jsp.jsp">Musical genres</a>
+	</div>
+	<div class="col-md-8">
+	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
+	</div>
+	</div> <!--  first row -->
+	
+	<div class = "row">
+	<div class = "col-md-12">
     	<!--Search Form -->
         <form action="/RadioDatabaseWebApp/radio" method="get">
         	<input type="hidden" id="searchAction" name="searchAction" value="searchGenre" />
@@ -63,6 +78,8 @@
                         </div>
                </c:otherwise>
                </c:choose>                        
-   </div>
+   </div> <!--  col -->
+   </div> <!--  second row -->
+   </div> <!--  container  -->
 </body>
 </html>

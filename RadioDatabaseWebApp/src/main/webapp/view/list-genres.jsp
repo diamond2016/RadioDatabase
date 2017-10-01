@@ -31,12 +31,15 @@ height: 5em;
 <div class="container">
 <div class="row">
 	<div class="col-md-2">
-	<a href="/index.jsp">Home</a>
+	<a href="/RadioDatabaseWebApp/index.jsp">Home</a>
 	</div>
 	<div class="col-md-2">
-	<a href="/view/list-genres.jsp.jsp">Musical genres</a>
+	<a href="/RadioDatabaseWebApp/radio?searchAction=searchByName">Radios</a>
+	</div>	
+	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=searchGenre">Musical genres</a>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-6">
 	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
 	</div>
 	</div> <!--  first row -->
@@ -44,13 +47,12 @@ height: 5em;
 	<div class = "row">
 	<div class = "col-md-12">
     	<!--Search Form -->
-        <form action="/RadioDatabaseWebApp/radio" method="get">
+        <form action="/RadioDatabaseWebApp/radio" class="navbar-form navbar-center" role="search" method="get">
+        <div class="form-group">
         	<input type="hidden" id="searchAction" name="searchAction" value="searchGenre" />
-			<p>Press button to list genres</p>
-          	<button type="submit" class="btn btn-info">
-            	<span class="glyphicon glyphicon-search"></span> Search Genres
-            </button>
-            <br></br>
+			<input type="text" name="radioName" id="radioName" class="form-control" required="required" placeholder="Type the Name of genre to search"/>          	
+          	<button type="submit" class="btn btn-default">Search</button>
+        </div>
     	</form>           
  	      
         <!--Genre List-->                        

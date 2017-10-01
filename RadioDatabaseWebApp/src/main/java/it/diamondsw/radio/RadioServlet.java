@@ -64,8 +64,8 @@ public class RadioServlet extends HttpServlet {
 
 
 	private void searchRadioByGenre(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int radioGenre = genreService.findGenreByName(req.getParameter("genreId")).getId();
-		List<RadioDesc> result = radioService.findAvailRadiosByGenre(radioGenre);
+		Genre radioGenre = genreService.findGenreByName(req.getParameter("name"));
+		List<RadioDesc> result = radioService.findAvailRadiosByGenre(radioGenre.getId());
 		forwardListRadios(req, resp, result);
 	}
 

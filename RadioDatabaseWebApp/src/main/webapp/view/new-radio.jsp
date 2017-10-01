@@ -20,9 +20,9 @@
    <div class="container-fluid row">
      <div class="nav navbar-nav" id="main-navbar">
       	<a class="nav-item active" href="/RadioDatabaseWebApp/index.jsp">Home</a>
-      	<a class="nav-item" href="./view/list-radios.jsp">Search</a>
-      	<a class="nav-item" href="./view/new-radio.jsp">Insert</a>
-      	<a class="nav-item" href="./view/list-genres.jsp">Genres</a>
+      	<a class="nav-item" href="/RadioDatabaseWebApp/view/list-radios.jsp">Search</a>
+      	<a class="nav-item" href="/RadioDatabaseWebApp/view/new-radio.jsp">Insert</a>
+      	<a class="nav-item" href="/RadioDatabaseWebApp/view/list-genres.jsp">Genres</a>
     </div>
   </div>
 </nav>          

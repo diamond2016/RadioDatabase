@@ -32,10 +32,10 @@ height: 5em;
 <div class="container">
 <div class="row">
 	<div class="col-md-2">
-	<a href="/index.jsp">Home</a>
+	<a href="/RadioDatabaseWebApp/index.jsp">Home</a>
 	</div>
 	<div class="col-md-2">
-	<a href="/view/list-genres.jsp.jsp">Musical genres</a>
+	<a href="/RadioDatabaseWebApp/radio?searchAction=searchGenre">Musical genres</a>
 	</div>
 	<div class="col-md-8">
 	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
@@ -47,6 +47,7 @@ height: 5em;
 	<form action="/RadioDatabaseWebApp/radio" class="navbar-form navbar-center" role="search" method="get">
 	<div class="form-group">
 	<!--Search Form -->
+	<input type="hidden" id="searchAction" name="searchAction" value="searchByName" />
 	<input type="text" name="radioName" id="radioName" class="form-control" required="required" placeholder="Type the Name of radio to search"/>                    
     <button type="submit" class="btn btn-default">Search</button>
     </div>

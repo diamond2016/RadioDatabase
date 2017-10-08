@@ -69,11 +69,11 @@ public class GenreModel {
     } // getGenre     
     
     /**
-    * Returns single genre by name
+    * Returns genres by name
     * Name (description) of genre
-    * @return genre, single object null if not found
+    * @return genres, objects with same genre, null if not found
     */
-    static Genre getGenreByName(String name) {
+    static List<Genre> getGenreByName(String name) {
     	Connection connection = DbConnectionSingleton.getInstance().getConnection();
     	ArrayList<Genre> genres = new ArrayList<Genre>();
     	ResultSet rs = null;
@@ -95,7 +95,7 @@ public class GenreModel {
            System.err.println(e.getMessage());
         }
         if (!genres.isEmpty()) 
-        	return genres.get(0); 
+        	return genres; 
         else return null;        
     } // getGenre   
     
@@ -105,21 +105,29 @@ public class GenreModel {
      */
      static void setGenres(List<Genre> l) {
      	Connection connection = DbConnectionSingleton.getInstance().getConnection();
+     	System.out.println("prima di try");
          try {
-         	Statement statement = connection.createStatement();    	  
+         	Statement statement = connection.createStatement(); 
+         	System.out.println("prima di for");
          	for (Genre item : l) {
          		// if not exists
          		Genre genre1 = getGenre(item.getId());
-         		if (genre1.getId() != item.getId()) {
-         			String stm = "insert into genres (id, genre) values (" + item.getId() + "," + item.getGenre() + ")" ;
-         			System.out.println(stm);
-         			statement.executeUpdate(stm);
+         		String stm = null;
+         		System.out.println("prima di if");
+         		if ((genre1 == null) && (item.getId() != 0)) {
+         			stm = "insert into genres (id, genre) values (" + item.getId() + "," + "'" + item.getGenre() + "'" + ")" ;
          		}
+         		else if ((genre1 == null) && (item.getId() == 0)){
+         			stm = "insert into genres (id, genre) values (" + "(select max(id)+10 from genres) " + "," + "'" + item.getGenre() + "'" + ")" ;
+         		}
+         		System.out.println("stmt = " +  stm);
+         		statement.executeUpdate(stm);
          	} // for each
          } // try
  	
          catch(Exception e )
          {
+        	System.out.println("exception");
             System.err.println(e.getMessage());
          }
      } // setGenres      

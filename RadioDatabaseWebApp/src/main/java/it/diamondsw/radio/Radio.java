@@ -7,6 +7,7 @@ public class Radio {
     private int genreId;
     private URL url;
     private int id;
+    private URL purl;
     
 	public Radio() {}
 	public Radio (int radioId, String radioName, int radioGenreId, URL radioUrl) {
@@ -15,7 +16,14 @@ public class Radio {
     	url = radioUrl;
     	id = radioId;
     }
-
+	public Radio (int radioId, String radioName, int radioGenreId, URL radioUrl, URL radioPlayUrl) {
+    	name = radioName;
+    	genreId = radioGenreId;
+    	url = radioUrl;
+    	id = radioId;
+    	purl = radioPlayUrl;
+    }
+	
     public void setName(String name) {
 	this.name = name;
     }
@@ -47,8 +55,19 @@ public class Radio {
 	return this.id;
     }
     
+    public void setPlayUrl (String radioPlayUrl) {
+	try {
+	    this.purl = new URL(radioPlayUrl);
+	}
+	catch (MalformedURLException e) { e.printStackTrace(); }
+    }
+    
+    public URL getPlayUrl() {
+	return this.purl;
+    }
+    
     public String toString() {
-    	return ("[ id=" + id + " name=" + name + " genre=" + genreId + " url=" + url.toString() + " ]");
+    	return ("[ id=" + id + " name=" + name + " genre=" + genreId + " url=" + url.toString() + "play = " + purl.toString() + " ]");
     }
     
 } // Radio                                   

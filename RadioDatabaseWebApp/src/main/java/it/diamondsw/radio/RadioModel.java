@@ -41,7 +41,9 @@ public class RadioModel {
 	      radio.setGenre(rs.getInt("genre_id"));
 	      radio.setUrl(rs.getString("url"));
 	      radio.setId(rs.getInt("id"));
+	      radio.setPlayUrl(rs.getString("play_url"));
 	      radios.add(radio);
+	      System.out.println("radio = " + radio);
           }
         } // try
 	
@@ -74,6 +76,7 @@ public class RadioModel {
  			   radio.setName(rs.getString("name"));
  			   radio.setGenre(rs.getInt("genre_id"));
  			   radio.setUrl(rs.getString("url"));
+ 			   radio.setPlayUrl(rs.getString("play_url"));
  			   radio.setId(rs.getInt("id"));
           }
          } // try
@@ -96,13 +99,20 @@ public class RadioModel {
         	for (Radio item : l) {
         		// if not exists
          		Radio radio1 = getRadio(item.getId());
-         		if (radio1.getId() != item.getId()) {
-         			String stm = "insert into radios (id, name, genre_id, url) values (" + 
-         						 item.getId() + "," + "'" + item.getName() + "'" + "," + 
-         			             item.getGenre() + "," + "'" + item.getUrl().toString() + "'" + ")";
-         			System.out.println(stm);;
-         			statement.executeUpdate(stm);
+         		String stm = null;
+         		if ((radio1 == null) && (item.getId() != 0)) {
+         			stm = "insert into radios (id, name, genre_id, url, play_url) values (" + 
+         					item.getId() + "," + "'" + item.getName() + "'" + "," + 
+         			        item.getGenre() + "," + "'" + item.getUrl().toString() + "'" + "," + 
+         					"'" + item.getPlayUrl().toString() + "'" + ")";
          		}
+         		else if ((radio1 != null) && (item.getId() == 0)){
+         			stm = "insert into radios (id, name, genre_id, url, play_url) values (" + 
+         					"(select max(id)+10 from radios)" + "," + "'" + item.getName() + "'" + "," + 
+        			        item.getGenre() + "," + "'" + item.getUrl().toString() + "'" + "," + 
+        					"'" + item.getPlayUrl().toString() + "'" + ")";        			
+         			}	
+         		statement.executeUpdate(stm);
          	} // for each
          } // try
          catch(Exception e)

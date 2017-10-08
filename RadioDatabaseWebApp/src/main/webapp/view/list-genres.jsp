@@ -30,6 +30,11 @@ height: 5em;
       
 <div class="container">
 <div class="row">
+<div class="col-md-4">
+	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
+</div> 
+</div> <!--  first row -->
+<div class="row">
 	<div class="col-md-2">
 	<a href="/RadioDatabaseWebApp/index.jsp">Home</a>
 	</div>
@@ -39,10 +44,13 @@ height: 5em;
 	<div class="col-md-2">
 	<a href="/RadioDatabaseWebApp/radio?searchAction=searchGenre">Musical genres</a>
 	</div>
-	<div class="col-md-6">
-	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
-	</div>
-	</div> <!--  first row -->
+	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=insertRadio">Add a Radio</a>
+	</div>	
+	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=insertGenre">Add a Radio Genre</a>
+	</div>		
+	</div> <!--  second row -->
 	
 	<div class = "row">
 	<div class = "col-md-12">
@@ -50,7 +58,7 @@ height: 5em;
         <form action="/RadioDatabaseWebApp/radio" class="navbar-form navbar-center" role="search" method="get">
         <div class="form-group">
         	<input type="hidden" id="searchAction" name="searchAction" value="searchGenre" />
-			<input type="text" name="radioName" id="radioName" class="form-control" required="required" placeholder="Type the Name of genre to search"/>          	
+			<input type="text" name="genreName" id="genreName" class="form-control" required="required" placeholder="Type the Name of genre to search"/>          	
           	<button type="submit" class="btn btn-default">Search</button>
         </div>
     	</form>           

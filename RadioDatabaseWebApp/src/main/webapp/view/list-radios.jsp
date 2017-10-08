@@ -31,16 +31,27 @@ height: 5em;
 
 <div class="container">
 <div class="row">
+<div class="col-md-4">
+	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
+</div> 
+</div> <!--  first row -->
+<div class="row">
 	<div class="col-md-2">
 	<a href="/RadioDatabaseWebApp/index.jsp">Home</a>
 	</div>
 	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=searchByName">Radios</a>
+	</div>	
+	<div class="col-md-2">
 	<a href="/RadioDatabaseWebApp/radio?searchAction=searchGenre">Musical genres</a>
 	</div>
-	<div class="col-md-8">
-	<% Date date = new Date(); out.print( "Internet radio database " + date.toString());%>
-	</div>
-	</div> <!--  first row -->
+	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=insertRadio">Add a Radio</a>
+	</div>	
+	<div class="col-md-2">
+	<a href="/RadioDatabaseWebApp/radio?searchAction=insertGenre">Add a Radio Genre</a>
+	</div>		
+	</div> <!--  second row -->
 	
 	<div class = "row">
 	<div class = "col-md-12">
@@ -53,16 +64,20 @@ height: 5em;
     </div>
  	</form>    
            
- 	<!--Radio List-->                        
+ 	<!--Radio List-->                  
  	<c:choose>
     	<c:when test="${not empty radioDescList}">
+		<form action="/RadioDatabaseWebApp/radio" class="navbar-form navbar-center" role="insert" method="get">
+		<div class="form-group">
+		    <input type="hidden" id="searchAction" name="searchAction" value="insertPlayUrl" />
         	<table  class="table table-striped table-bordered">
              	<thead>
                 <tr>
                 <td>#</td>
                 <td>Name</td>
                 <td>Genre</td>
-                <td>Url</td>                               
+                <td>Url</td>
+                <td>PlayUrl</td>                                
                 </tr>
                 </thead>
           <c:forEach var="radio" items="${radioDescList}">
@@ -70,10 +85,13 @@ height: 5em;
                	<td>${radio.id}</td>
                 <td>${radio.name}</td>
                 <td>${radio.genre}</td>
-                <td><a href="${radio.url}">${radio.name}</a></td> 
+                <td><a href="${radio.url}" target=”_blank”>${radio.name}</a></td>
+                <td><a href="${radio.purl}" target=”_blank”>play</a></td>              
                 </tr>
           </c:forEach>               
-          </table>  
+          </table>
+          </div>
+          </form>  
         </c:when>                    
         <c:otherwise>
              	<br/>           

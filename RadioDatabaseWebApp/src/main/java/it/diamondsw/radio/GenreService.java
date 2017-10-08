@@ -25,7 +25,7 @@ public class GenreService {
 	    * @param name of genre
 	    * @return a single genre if exists        
 	    */
-	    public Genre findGenreByName(String name) {
+	    public List<Genre> findGenreByName(String name) {
 	        return GenreModel.getGenreByName(name);	
 	    }
 	    
@@ -39,6 +39,7 @@ public class GenreService {
 	    	ArrayList<Genre> genres = new ArrayList<Genre>();
 	    	if (g != null) {
 	    		genres.add(g);
+	    		System.out.println("g not null");
 	    		GenreModel.setGenres(genres);	
 	    	}
 	    }    
